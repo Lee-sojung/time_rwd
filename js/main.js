@@ -79,6 +79,10 @@ function setTime(){
         hr2 = hr-12;
         pm.classList.add("on");
         am.classList.remove("on");
+    }else if(hr==12){
+        hr2 =hr;
+        pm.classList.add("on");
+        am.classList.remove("on");
     }else{
         hr2 = hr;
         am.classList.add("on");

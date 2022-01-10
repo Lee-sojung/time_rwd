@@ -1,31 +1,52 @@
 ﻿const main = document.querySelector('main');
-const menus = document.querySelector('nav span');
+const menus = document.querySelectorAll('nav span');
 const numbers = document.querySelectorAll('.screen span');
 
 setInterval(()=>{
     //setTime함수로 시간,분,초 값 배열로 반환
     const times = setTime();
+    let hr = times[0];
     //반환된 숫자값들을 반복을 돌며 값을 보정하여 선택자의 순번에 맞게 적용
     times.forEach((time, index) =>getTime(time, index));
 
+    //조건식과 그에 매칭되는 클래스명을 객체형태로 묶어서 배열로 저장
+    const data = [
+        {condition: hr >= 5 && hr < 11, name: 'morning'},
+        {condition: hr >= 11 && hr<15, name: 'afternoon'},
+        {condition: hr >=16 && hr<19, name: 'evening'},
+        {condition: hr >= 19 || hr<5, name: 'night'},
+    ]
 
-    if(hr >= 5 && hr < 11){
+    //해당 배열을 반복돌면서 main,menus를 활성화
+    data.forEach((item, index)=>{
+        if(item.condition){
+            main.className="";
+            main.classList.add(item.name);
+
+            for(let menu of menus) menu.classList.remove("on");
+            menus[index].classList.add("on");
+
+        }
+    })
+
+
+    // if(hr >= 5 && hr < 11){
         //혹시라도 있을지모르는 클래스명 싹다 비우기
-        main.className = "";
-        main.classList.add('morning');
-    }
-    if(hr >= 11 && hr<15){
-        main.className = "";
-        main.classList.add("afternoon");
-    }
-    if(hr >=16 && hr<19){
-        main.className = "";
-        main.classList.add('evening');
-    }
-    if(hr >= 19 || hr<5){
-        main.className ="";
-        main.classList.add('night');
-    }
+    //     main.className = "";
+    //     main.classList.add('morning');
+    // }
+    // if(hr >= 11 && hr<15){
+    //     main.className = "";
+    //     main.classList.add("afternoon");
+    // }
+    // if(hr >=16 && hr<19){
+    //     main.className = "";
+    //     main.classList.add('evening');
+    // }
+    // if(hr >= 19 || hr<5){
+    //     main.className ="";
+    //     main.classList.add('night');
+    // }
 
 
     // if(hr < 10) hr ='0'+hr;

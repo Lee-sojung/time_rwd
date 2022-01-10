@@ -1,6 +1,7 @@
 ﻿const main = document.querySelector('main');
 const menus = document.querySelectorAll('nav span');
 const numbers = document.querySelectorAll('.screen span');
+const [am, pm] = document.querySelectorAll('.screen em');
 
 setInterval(()=>{
     //setTime함수로 시간,분,초 값 배열로 반환
@@ -28,6 +29,13 @@ setInterval(()=>{
 
         }
     })
+
+    //현재 메인의 클래스명이 afternoon일때만 추가로 dark_text클래스 추가
+    if(main.classList.contains('afternoon')){
+        main.classList.add('dark_text');
+    }else{
+        main.classList.remove('dark_text');
+    }
 
 
     // if(hr >= 5 && hr < 11){
@@ -64,6 +72,18 @@ function setTime(){
     let hr = now.getHours();
     let min = now.getMinutes();
     let sec = now.getSeconds();
+    let hr2 = null;
+
+    
+    if(hr >= 12){
+        hr2 = hr-12;
+        pm.classList.add("on");
+        am.classList.remove("on");
+    }else{
+        hr2 = hr;
+        am.classList.add("on");
+        pm.classList.remove("on");
+    }
 
     return[hr, min, sec];
 }

@@ -11,7 +11,29 @@ main {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	background-image: url(../img/bg_morning.jpg);
+	
+    &.mornig{
+        background-image: url(../img/bg_morning.jpg);
+        figure{background-image: url(../img/phone_morning.png);}
+    }
+    &.afternoon{
+        background-image: url(../img/bg_afternoon.jpg);
+        figure{background-image: url(../img/phone_afternoon.png);}
+    }
+    &.evening{
+        background-image: url(../img/bg_evening.jpg);
+        figure{background-image: url(../img/phone_evening.png);}
+    }
+    &.night{
+        background-image: url(../img/bg_night.jpg);
+        figure{background-image: url(../img/phone_night.png);}
+    }
+    //낮 테마일때 추가로 붙는 클래스명 dark_text로 잘 안보이는 글자처리
+    &.dark_text{
+        header h1, header #gnb li a, header #sns li i, article p , article em, figure .screen{
+            color: #555;
+        }
+    }
 
     .sky_cl1{
         position: absolute;
@@ -109,6 +131,18 @@ main {
             color: #fff;
             text-align: center;
             overflow: hidden;
+
+            em{
+                position: absolute;
+                top: 100px; left: 80px;
+                line-height: 1;
+                font-size: 20px;
+                opacity: 0;
+
+                &.on{
+                    opacity: 1;
+                }
+            }
 
             span{
                 display: inline-block;

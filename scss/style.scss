@@ -110,6 +110,11 @@ main {
             text-align: center;
             overflow: hidden;
 
+            span{
+                display: inline-block;
+                width: 90px;
+            }
+
             .cl1{
                 width: 300px;
                 position: absolute;
